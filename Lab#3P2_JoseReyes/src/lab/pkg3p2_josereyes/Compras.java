@@ -11,17 +11,23 @@ import java.util.ArrayList;
  * @author josem
  */
 public class Compras {
-    private ArrayList <Productos> productos;
+   private ArrayList<Productos> productos;
     private double total;
-
-    public Compras(Productos producto) {
-        this.productos.add(producto);
-        total+=producto.getPrecio();
+    
+    public Compras(){
+        productos = new ArrayList<Productos>();
+        total = 0.0;
     }
-        public void Factura() {
-        System.out.println("Productos comprados:");
+    
+    public void agregarProducto(Productos producto) {
+        productos.add(producto);
+        total += producto.getPrecio();
+    }
+    
+    public void mostrarCompras() {
+        System.out.println("Compras realizadas:");
         for (Productos producto : productos) {
-            System.out.println("- " + producto);
+            System.out.println(producto.getNombre() + " - $" + producto.getPrecio());
         }
         System.out.println("Total: $" + total);
     }

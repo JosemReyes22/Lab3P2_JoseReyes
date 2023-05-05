@@ -18,9 +18,9 @@ public class Lab3P2_JoseReyes {
      */
     static ArrayList<Productos> COMIDAS = new ArrayList<>();
     static ArrayList<Productos> BEBIDAS = new ArrayList<>();
+   
     public static void main(String[] args) {
-
-
+        Compras compraste=new Compras();
         
         Scanner r=new Scanner(System.in);
         int menu=1;
@@ -44,7 +44,6 @@ public class Lab3P2_JoseReyes {
                     COMIDAS.add(new Comidas(Estados,comidas,precios));
                 }break;
                 case 2:{
-                    
                     System.out.print("Ingrese el Nombre de la bebida: ");
                     r.nextLine();
                     String bebidas=r.nextLine();
@@ -77,18 +76,23 @@ public class Lab3P2_JoseReyes {
                                 System.out.print("Ingrese el precio nuevo: ");
                                 double new2=r.nextDouble();
                                 BEBIDAS.get(num).setPrecio(new2);
-                                
                                 System.out.println("Bebida modificada");
-                                
                             }
                         }else if(mod.equals("comida")){
                             if(COMIDAS.isEmpty()){
                                 System.out.println("Lista de comidas vacia");
                             }else{
-                                System.out.print("Ingrese el numero de la bebida a eliminar:");
+                                System.out.print("Ingrese el numero de la comidas a modificar:");
                                 int num=r.nextInt();
-                                COMIDAS.remove(num-1); 
-                                System.out.println("Comida eliminada");
+                                num--;
+                                System.out.print("Ingrese el nombre nuevo: ");
+                                r.nextLine();
+                                String new1=r.nextLine();
+                                COMIDAS.get(num).setNombre(new1);
+                                System.out.print("Ingrese el precio nuevo: ");
+                                double new2=r.nextDouble();
+                                COMIDAS.get(num).setPrecio(new2);
+                                System.out.println("Comida  modificada");
                             }
                         }else{
                             System.out.println("Error...");
@@ -136,12 +140,26 @@ public class Lab3P2_JoseReyes {
                     }
                 }break;
                 case 6:{
-                    
+                    System.out.println("Dese agrega comida o bebida?");
+                        r.nextLine();
+                        String coms=r.nextLine();
+                        if(coms.equals("bebida")){
+                            System.out.println("Ingres el numero de la bebida");
+                            int coms1=r.nextInt();
+                            coms1=coms1-1;
+                            Productos producto = BEBIDAS.get(coms1);
+                            compraste.agregarProducto(producto);
+                        }else if(coms.equals("comida")){
+                            System.out.println("Ingres el numero de la comida");
+                            int coms1=r.nextInt();
+                            coms1=coms1-1;
+                            Productos producto = COMIDAS.get(coms1);
+                            compraste.agregarProducto(producto);
+                        }
                 }break;
                 case 7:{
-                    
-                    
-                }break;
+                    compraste.mostrarCompras();
+                }
                 case 8:{
                     menu=0;
                     System.out.println("\n~~~~Programa finalizado~~~~");
@@ -150,7 +168,8 @@ public class Lab3P2_JoseReyes {
                     System.out.println("Opcion no valida");
             }
         }
-    }public static void Listado(){
+    }
+    public static void Listado(){
         int i=1;
         System.out.println("\nListado de bebidas");
         for (Productos productos : BEBIDAS) {
