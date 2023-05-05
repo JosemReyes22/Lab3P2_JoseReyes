@@ -4,6 +4,7 @@
  */
 package lab.pkg3p2_josereyes;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -16,6 +17,7 @@ public class Lab3P2_JoseReyes {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        ArrayList inventario = new ArrayList();
         
         Scanner r=new Scanner(System.in);
         int menu=1;
@@ -35,6 +37,7 @@ public class Lab3P2_JoseReyes {
                     System.out.print("Ingrese el estado del producto(Vencido/Buen Estado): ");
                     r.nextLine();
                     String Estados=r.nextLine();
+                    
                     
                 }break;
                 case 2:{
