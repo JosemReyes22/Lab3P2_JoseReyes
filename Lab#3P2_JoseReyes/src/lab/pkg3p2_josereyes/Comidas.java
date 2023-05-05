@@ -26,6 +26,6 @@ public class Comidas extends Productos{
 
     @Override
     public String toString() {
-        return super.toString()+ "Comidas{" + "Estado del producto=" + Vencido + '}';
+        return "\n"+super.toString()+", estado del producto: "+Vencido+"}";
     }
 }

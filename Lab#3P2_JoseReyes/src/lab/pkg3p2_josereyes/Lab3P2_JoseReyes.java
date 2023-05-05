@@ -16,14 +16,16 @@ public class Lab3P2_JoseReyes {
     /**
      * @param args the command line arguments
      */
+    static ArrayList<Productos> COMIDAS = new ArrayList<>();
+    static ArrayList<Productos> BEBIDAS = new ArrayList<>();
     public static void main(String[] args) {
-        ArrayList<Productos> producto = new ArrayList<Productos>();
+
 
         
         Scanner r=new Scanner(System.in);
         int menu=1;
         while(menu==1){
-            System.out.println("~~~Menu principal~~~");
+            System.out.println("\n~~~Menu principal~~~");
             System.out.println("1.Agregar comida\n2.Agregar bebidas\n3.Modificar productos\n4.Eliminar producto\n5.Mostrar Producto\n6.Generar compra\n7.Registro Compras\n8.Salir");
             System.out.print("Elija su opcion: ");
             int op=r.nextInt();
@@ -39,7 +41,7 @@ public class Lab3P2_JoseReyes {
                     System.out.print("Ingrese el estado del producto(Vencido/Buen Estado): ");
                     r.nextLine();
                     String Estados=r.nextLine();
-                    producto.add(new Comidas(Estados,comidas,precios));
+                    COMIDAS.add(new Comidas(Estados,comidas,precios));
                 }break;
                 case 2:{
                     
@@ -50,16 +52,49 @@ public class Lab3P2_JoseReyes {
                     double precios=r.nextDouble();
                     System.out.print("Ingrese tamano de ML de la bebida: ");
                     double tam=r.nextDouble();
-                    producto.add(new Bebidas(tam,bebidas,precios));
+                    BEBIDAS.add(new Bebidas(tam,bebidas,precios));
                 }break;
                 case 3:{
-                    
                 }break;
                 case 4:{
-                    
+                    if(COMIDAS.isEmpty() && BEBIDAS.isEmpty()){
+                        System.out.println("Listas vacias");
+                    }else{
+                        Listado();
+                        System.out.println("Desea eliminar bebidas o comida?");
+                        r.nextLine();
+                        String elim=r.nextLine().toLowerCase();
+                        
+                        if(elim.equals("bebidas")){
+                            if(BEBIDAS.isEmpty()){
+                                System.out.println("Inventario de bebidas vacia");
+                            }else{
+                                System.out.print("Ingrese el numero de la bebida a eliminar:");
+                                int num=r.nextInt();
+                                BEBIDAS.remove(num-1);
+                                System.out.println("Bebida eliminada");
+                            }
+                        }else if(elim.equals("comida")){
+                            if(COMIDAS.isEmpty()){
+                                System.out.println("Lista de comidas vacia");
+                            }else{
+                                System.out.print("Ingrese el numero de la bebida a eliminar:");
+                                int num=r.nextInt();
+                                COMIDAS.remove(num-1); 
+                                System.out.println("Comida eliminada");
+                            }
+                        }else{
+                            System.out.println("Error...");
+                        }
+                    }
                 }break;
                 case 5:{
-                    
+                    System.out.println("Productos\n");
+                    if(COMIDAS.isEmpty() && BEBIDAS.isEmpty()){
+                        System.out.println("Listas vacias");
+                    }else{
+                    Listado();
+                    }
                 }break;
                 case 6:{
                     
@@ -75,5 +110,22 @@ public class Lab3P2_JoseReyes {
                     System.out.println("Opcion no valida");
             }
         }
+    }public static void Listado(){
+        int i=1;
+        System.out.println("\nListado de bebidas");
+        for (Productos productos : BEBIDAS) {
+            System.out.print("Bebida "+i);
+            System.out.println(productos);
+            i++;
+        }
+        System.out.println("-------------------");
+        int j=1;
+        System.out.println("\nListado de comidas");
+        for (Productos productos : COMIDAS) {
+            System.out.print("Comida "+j);
+            System.out.println(productos);
+            j++;
+        }
+        System.out.println("-------------------");
     }
 }

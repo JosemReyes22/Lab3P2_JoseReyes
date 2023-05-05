@@ -25,6 +25,6 @@ public class Bebidas extends Productos{
     
     @Override
     public String toString() {
-        return super.toString()+ "Bebida{" + "Miliitros=" + tamMil + '}';
+        return "\n"+super.toString()+ ", bebida de " + tamMil + "ml" + '}';
     }
 }
