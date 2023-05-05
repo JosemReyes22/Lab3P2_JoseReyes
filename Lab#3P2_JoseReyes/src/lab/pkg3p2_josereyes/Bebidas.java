@@ -10,11 +10,12 @@ package lab.pkg3p2_josereyes;
  */
 public class Bebidas extends Productos{
     private double tamMil;
+    
+    
     public Bebidas(double tamMil, String Nombre, double precio) {
         super(Nombre, precio);
         this.tamMil = tamMil;
     }
-    
     public double getTamMil() {
         return tamMil;
     }

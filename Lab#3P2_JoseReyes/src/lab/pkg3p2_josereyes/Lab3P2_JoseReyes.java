@@ -55,6 +55,45 @@ public class Lab3P2_JoseReyes {
                     BEBIDAS.add(new Bebidas(tam,bebidas,precios));
                 }break;
                 case 3:{
+                    if(COMIDAS.isEmpty() && BEBIDAS.isEmpty()){
+                        System.out.println("Listas vacias");
+                    }else{
+                        Listado();
+                        System.out.println("Desea modifica bebidas o comida?");
+                        r.nextLine();
+                        String mod=r.nextLine().toLowerCase();
+                        
+                        if(mod.equals("bebidas")){
+                            if(BEBIDAS.isEmpty()){
+                                System.out.println("Inventario de bebidas vacia");
+                            }else{
+                                System.out.print("Ingrese el numero de la bebida a modificar:");
+                                int num=r.nextInt();
+                                num--;
+                                System.out.print("Ingrese el nombre nuevo: ");
+                                r.nextLine();
+                                String new1=r.nextLine();
+                                BEBIDAS.get(num).setNombre(new1);
+                                System.out.print("Ingrese el precio nuevo: ");
+                                double new2=r.nextDouble();
+                                BEBIDAS.get(num).setPrecio(new2);
+                                
+                                System.out.println("Bebida modificada");
+                                
+                            }
+                        }else if(mod.equals("comida")){
+                            if(COMIDAS.isEmpty()){
+                                System.out.println("Lista de comidas vacia");
+                            }else{
+                                System.out.print("Ingrese el numero de la bebida a eliminar:");
+                                int num=r.nextInt();
+                                COMIDAS.remove(num-1); 
+                                System.out.println("Comida eliminada");
+                            }
+                        }else{
+                            System.out.println("Error...");
+                        }
+                    }
                 }break;
                 case 4:{
                     if(COMIDAS.isEmpty() && BEBIDAS.isEmpty()){
@@ -78,7 +117,7 @@ public class Lab3P2_JoseReyes {
                             if(COMIDAS.isEmpty()){
                                 System.out.println("Lista de comidas vacia");
                             }else{
-                                System.out.print("Ingrese el numero de la bebida a eliminar:");
+                                System.out.print("Ingrese el numero de la comdia a eliminar:");
                                 int num=r.nextInt();
                                 COMIDAS.remove(num-1); 
                                 System.out.println("Comida eliminada");
@@ -100,6 +139,7 @@ public class Lab3P2_JoseReyes {
                     
                 }break;
                 case 7:{
+                    
                     
                 }break;
                 case 8:{
