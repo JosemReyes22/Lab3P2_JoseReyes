@@ -17,7 +17,8 @@ public class Lab3P2_JoseReyes {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArrayList inventario = new ArrayList();
+        ArrayList<Productos> producto = new ArrayList<Productos>();
+
         
         Scanner r=new Scanner(System.in);
         int menu=1;
@@ -29,19 +30,27 @@ public class Lab3P2_JoseReyes {
             
             switch(op){
                 case 1:{
+                    
                     System.out.print("Ingrese el Nombre de la comida: ");
                     r.nextLine();
                     String comidas=r.nextLine();
-                    System.out.print("Ingrese el precio de la bebida: ");
+                    System.out.print("Ingrese el precio de la comida: ");
                     double precios=r.nextDouble();
                     System.out.print("Ingrese el estado del producto(Vencido/Buen Estado): ");
                     r.nextLine();
                     String Estados=r.nextLine();
-                    
-                    
+                    producto.add(new Comidas(Estados,comidas,precios));
                 }break;
                 case 2:{
                     
+                    System.out.print("Ingrese el Nombre de la bebida: ");
+                    r.nextLine();
+                    String bebidas=r.nextLine();
+                    System.out.print("Ingrese el precio de la bebida: ");
+                    double precios=r.nextDouble();
+                    System.out.print("Ingrese tamano de ML de la bebida: ");
+                    double tam=r.nextDouble();
+                    producto.add(new Bebidas(tam,bebidas,precios));
                 }break;
                 case 3:{
                     

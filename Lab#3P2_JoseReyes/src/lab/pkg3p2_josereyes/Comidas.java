@@ -23,6 +23,9 @@ public class Comidas extends Productos{
     public void setVencido(String Vencido) {
         this.Vencido = Vencido;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return super.toString()+ "Comidas{" + "Estado del producto=" + Vencido + '}';
+    }
 }
